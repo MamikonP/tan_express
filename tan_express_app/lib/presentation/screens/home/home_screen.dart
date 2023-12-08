@@ -5,6 +5,7 @@ import '../../../core/extensions/number_extension.dart';
 import '../../../domain/entities/sun_card/sun_card_entity.dart';
 import '../../../logic/navigation/navigation_cubit.dart';
 import '../../constants/gaps.dart';
+import '../../widgets/screen_components/home_screen/tabs/history_content.dart';
 import '../../widgets/screen_components/home_screen/tabs/my_profile_content.dart';
 import '../app_screen.dart';
 
@@ -120,20 +121,29 @@ class _HomeScreenState extends State<HomeScreen>
                           controller: _tabController,
                           children: <Widget>[
                             SingleChildScrollView(
-                              child: MyProfileContent(<SunCardEntity>[
-                                SunCardEntity(
-                                    title: 'Kista Galleria', value: '0 kr'),
-                                SunCardEntity(
-                                    title: 'TanExpress Brommaplan',
-                                    value: '90 kr',
-                                    selected: true),
-                                SunCardEntity(
-                                    title: 'Farsta Centrum', value: '0 kr'),
-                                SunCardEntity(
-                                    title: 'Huddinge Centrum', value: '120 kr')
-                              ]),
+                              child: Padding(
+                                padding: Gaps.large.allPadding,
+                                child: MyProfileContent(<SunCardEntity>[
+                                  SunCardEntity(
+                                      title: 'Kista Galleria', value: '0 kr'),
+                                  SunCardEntity(
+                                      title: 'TanExpress Brommaplan',
+                                      value: '90 kr',
+                                      selected: true),
+                                  SunCardEntity(
+                                      title: 'Farsta Centrum', value: '0 kr'),
+                                  SunCardEntity(
+                                      title: 'Huddinge Centrum',
+                                      value: '120 kr')
+                                ]),
+                              ),
                             ),
-                            Text('Non profile'),
+                            SingleChildScrollView(
+                              child: Padding(
+                                padding: Gaps.large.allPadding,
+                                child: const HistoryContent(),
+                              ),
+                            ),
                           ],
                         ),
                       _ => const Placeholder(),

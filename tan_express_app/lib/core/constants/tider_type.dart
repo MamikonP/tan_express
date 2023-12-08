@@ -1,0 +1,1 @@
+enum TiderType { Varukorg, Saldo }
