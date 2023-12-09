@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/assets_text.dart';
 import '../../../../../core/extensions/number_extension.dart';
+import '../../../../../core/router/app_routes.dart';
 import '../../../../../domain/entities/sun_card/sun_card_entity.dart';
+import '../../../../../logic/navigation/navigation_cubit.dart';
 import '../../../../constants/gaps.dart';
 import '../../../general/app_button.dart';
 import '../../../general/details_widget.dart';
@@ -20,36 +23,44 @@ class MyProfileContent extends StatelessWidget {
       children: <Widget>[
         const Center(
             child: AssetImageWidget.svg(
-                imageName: AssetsText.icSmile, width: 100, height: 100)),
+          imageName: AssetsText.icSmile,
+          width: 100,
+          height: 100,
+          color: Color(0xffAF52DE),
+        )),
         Gaps.larger.verticalSpace,
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             AppButton(
               text: 'Ändra uppgifter',
-              trailingIcon: Icon(Icons.chevron_right_sharp),
+              trailingIcon: const Icon(Icons.chevron_right_sharp),
               radius: 100,
-              backgroundColor: Color(0xffE5E5EA),
+              backgroundColor: const Color(0xffE5E5EA),
+              onTap: () => context
+                  .read<NavigationCubit>()
+                  .push(context, AppRoutes.details),
             ),
             AppButton(
               text: 'Inställningar',
-              trailingIcon: Icon(Icons.chevron_right_sharp),
+              trailingIcon: const Icon(Icons.chevron_right_sharp),
               radius: 100,
-              backgroundColor: Color(0xffE5E5EA),
+              backgroundColor: const Color(0xffE5E5EA),
+              onTap: () {},
             ),
           ],
         ),
         Gaps.larger.verticalSpace,
         const DetailsWidget(
           'Mina solkort',
-          'Saldo',
+          value: 'Saldo',
           color: Colors.black,
           isHeader: true,
         ),
         ...sunCards
             .map((SunCardEntity e) => DetailsWidget(
                   e.title,
-                  e.value,
+                  value: e.value,
                   color: e.selected ? const Color(0xffAF52DE) : null,
                 ))
             .toList(),

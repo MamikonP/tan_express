@@ -14,9 +14,9 @@ abstract class AppRouter {
       case AppRoutes.home:
         return HomeRoute<dynamic>();
       case AppRoutes.receipt:
-        return ReceiptRoute<dynamic>();
+        return ReceiptRoute<dynamic>(settings: settings);
       case AppRoutes.details:
-        return ProfileDetailRoute<dynamic>();
+        return ProfileDetailRoute<dynamic>(settings: settings);
       default:
         throw Exception('Route not found!');
     }

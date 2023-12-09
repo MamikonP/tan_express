@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../domain/entities/tider/tider_entity.dart';
 import 'receipt_screen.dart';
-
 
 class ReceiptRoute<T> extends PageRoute<T>
     with CupertinoRouteTransitionMixin<T> {
@@ -13,7 +13,8 @@ class ReceiptRoute<T> extends PageRoute<T>
 
   @override
   Widget buildContent(BuildContext context) {
-    return const ReceiptScreen();
+    final TiderEntity? entity = settings.arguments as TiderEntity?;
+    return ReceiptScreen(entity);
   }
 
   @override

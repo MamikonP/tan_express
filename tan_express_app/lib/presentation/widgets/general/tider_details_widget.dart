@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/extensions/number_extension.dart';
+import '../../../core/router/app_routes.dart';
 import '../../../domain/entities/tider/tider_entity.dart';
+import '../../../logic/navigation/navigation_cubit.dart';
 import '../../constants/gaps.dart';
 import 'header_widget.dart';
 
 class TiderDetailsWidget<T extends TiderEntity> extends StatelessWidget {
   const TiderDetailsWidget(this.header, this.headerRow, this.content,
-      {super.key});
+      {this.onClick, super.key});
 
   final String header;
   final List<String> headerRow;
   final List<T> content;
+  final void Function(T entity)? onClick;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +63,12 @@ class TiderDetailsWidget<T extends TiderEntity> extends StatelessWidget {
                                 color: Color(0xff8E8E93), fontSize: 14)),
                       ),
                       GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            onClick?.call(e as T);
+                            context
+                                .read<NavigationCubit>()
+                                .push(context, AppRoutes.receipt, arguments: e);
+                          },
                           child: const Icon(
                             Icons.arrow_forward_ios_rounded,
                             color: Color(0xffAF52DE),

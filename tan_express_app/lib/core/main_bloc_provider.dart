@@ -15,7 +15,7 @@ class MainBlocProvider extends StatelessWidget {
           create: (BuildContext context) => LocaleCubit(),
         ),
         BlocProvider<NavigationCubit>(
-          create: (BuildContext context) => NavigationCubit(context),
+          create: (BuildContext context) => NavigationCubit(),
         )
       ], child: child);
 }

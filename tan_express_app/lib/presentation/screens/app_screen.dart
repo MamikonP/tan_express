@@ -28,15 +28,9 @@ class AppScreen extends StatelessWidget {
       backgroundColor: backgroundColor,
       bottomNavigationBar: withNavbar
           ? BottomNavBar(<NavBarEntity>[
-              NavBarEntity(
-                  label: 'notification', //TODO L10n.of(context).tr.clubs,
-                  assetIcon: AssetsText.icBell),
-              NavBarEntity(
-                  label: 'headlight', //L10n.of(context).tr.discover,
-                  assetIcon: AssetsText.icSun),
-              NavBarEntity(
-                  label: 'Profile', // L10n.of(context).tr.profile,
-                  assetIcon: AssetsText.icSmile),
+              NavBarEntity(label: 'NYHETER', assetIcon: AssetsText.icBell),
+              NavBarEntity(label: 'ANLAGGING', assetIcon: AssetsText.icSun),
+              NavBarEntity(label: 'MIN PROFIL', assetIcon: AssetsText.icSmile),
             ])
           : null,
       body: body,

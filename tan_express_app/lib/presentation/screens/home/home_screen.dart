@@ -74,8 +74,8 @@ class _HomeScreenState extends State<HomeScreen>
                     titleSpacing: 0,
                     centerTitle: true,
                     forceElevated: innerBoxIsScrolled,
-                    title: Text(
-                      'Header',
+                    title: const Text(
+                      'Min profil',
                       style: TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.black),
                     )),
@@ -116,11 +116,12 @@ class _HomeScreenState extends State<HomeScreen>
               ],
               body: state is NavigationNavBarUpdated
                   ? switch (state.index) {
-                      1 => const Placeholder(),
+                      1 => const Center(child: Text('Comming soon')),
                       2 => TabBarView(
                           controller: _tabController,
                           children: <Widget>[
                             SingleChildScrollView(
+                              physics: const BouncingScrollPhysics(),
                               child: Padding(
                                 padding: Gaps.large.allPadding,
                                 child: MyProfileContent(<SunCardEntity>[
@@ -139,6 +140,7 @@ class _HomeScreenState extends State<HomeScreen>
                               ),
                             ),
                             SingleChildScrollView(
+                              physics: const BouncingScrollPhysics(),
                               child: Padding(
                                 padding: Gaps.large.allPadding,
                                 child: const HistoryContent(),
@@ -146,9 +148,9 @@ class _HomeScreenState extends State<HomeScreen>
                             ),
                           ],
                         ),
-                      _ => const Placeholder(),
+                      _ => const Center(child: Text('Comming soon')),
                     }
-                  : const Placeholder(),
+                  : const Center(child: Text('Comming soon')),
               key: PageStorageKey<int>(
                   state is NavigationNavBarUpdated ? state.index : 0),
             ),
